@@ -1,0 +1,48 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Contact Information -->
+      <div class="contact-section">
+        <h3>{{ currentLanguage() === 'en' ? 'Leasing Office' : 'Bureau de Location' }}</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <mat-icon>phone</mat-icon>
+            <a href="tel:{{ contactInfo.phone }}">{{ contactInfo.phone }}</a>
+          </div>
+          <div class="contact-item">
+            <mat-icon>email</mat-icon>
+            <a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a>
+          </div>
+          <div class="contact-item">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ contactInfo.address }}</span>
+          </div>
+          <div class="contact-item">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ currentLanguage() === 'en' ? contactInfo.hours.en : contactInfo.hours.fr }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Social Media -->
+      <div class="social-section">
+        <h3>{{ currentLanguage() === 'en' ? 'Follow Us' : 'Suivez-Nous' }}</h3>
+        <div class="social-links">
+          <a *ngFor="let social of socialMedia" 
+             [href]="social.url" 
+             target="_blank" 
+             rel="noopener"
+             [attr.aria-label]="social.name"
+             class="social-link">
+            <mat-icon [fontIcon]="social.icon"></mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 Le 2170 Lincoln. {{ currentLanguage() === 'en' ? 'All rights reserved.' : 'Tous droits réservés.' }}</p>
+    </div>
+  </div>
+</footer>

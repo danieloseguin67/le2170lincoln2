@@ -1,0 +1,19 @@
+<section class="page-header">
+  <div class="container">
+    <h1>{{ currentLanguage() === 'en' ? 'Amenities' : 'Commodités' }}</h1>
+    <p>{{ currentLanguage() === 'en' ? 'Modern amenities for comfortable living' : 'Commodités modernes pour une vie confortable' }}</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="placeholder-content">
+      <mat-icon>apartment</mat-icon>
+      <h2>{{ currentLanguage() === 'en' ? 'Amenities Information Coming Soon' : 'Informations sur les Commodités Bientôt' }}</h2>
+      <p>{{ currentLanguage() === 'en' ? 'This page will showcase all building amenities including fitness center, rooftop terrace, and more.' : 'Cette page présentera toutes les commodités de l\'immeuble incluant le centre de fitness, la terrasse sur le toit, et plus.' }}</p>
+      <button mat-raised-button color="primary" routerLink="/apartments">
+        {{ currentLanguage() === 'en' ? 'View Apartments' : 'Voir les Appartements' }}
+      </button>
+    </div>
+  </div>
+</section>

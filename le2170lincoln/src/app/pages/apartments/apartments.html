@@ -1,0 +1,60 @@
+<section class="page-header">
+  <div class="container">
+    <h1>{{ currentLanguage() === 'en' ? 'Available Apartments' : 'Appartements Disponibles' }}</h1>
+    <p>{{ currentLanguage() === 'en' ? 'Find your perfect home at Le 2170 Lincoln' : 'Trouvez votre chez-vous parfait au 2170 Lincoln' }}</p>
+  </div>
+</section>
+
+<section class="apartments-section">
+  <div class="container">
+    <div class="apartments-grid">
+      <mat-card *ngFor="let apartment of apartments" class="apartment-card" 
+                [class.unavailable]="!apartment.available">
+        <div class="apartment-image">
+          <div class="image-placeholder">
+            <mat-icon>apartment</mat-icon>
+            <p>{{ currentLanguage() === 'en' ? 'Apartment Photo' : 'Photo d\'Appartement' }}</p>
+          </div>
+          <div class="availability-badge" [class.available]="apartment.available">
+            {{ apartment.available 
+               ? (currentLanguage() === 'en' ? 'Available' : 'Disponible')
+               : (currentLanguage() === 'en' ? 'Occupied' : 'Occupé') }}
+          </div>
+        </div>
+        
+        <mat-card-content>
+          <div class="apartment-header">
+            <h3>{{ apartment.type }}</h3>
+            <div class="rent">${{ apartment.rent }}/{{ currentLanguage() === 'en' ? 'month' : 'mois' }}</div>
+          </div>
+          
+          <div class="apartment-details">
+            <div class="detail-item">
+              <mat-icon>square_foot</mat-icon>
+              <span>{{ apartment.size }} {{ currentLanguage() === 'en' ? 'sq ft' : 'pi²' }}</span>
+            </div>
+          </div>
+          
+          <div class="features">
+            <mat-chip-set>
+              <mat-chip *ngFor="let feature of apartment.features">{{ feature }}</mat-chip>
+            </mat-chip-set>
+          </div>
+          
+          <div class="apartment-actions">
+            <button mat-raised-button color="primary" 
+                    [disabled]="!apartment.available"
+                    routerLink="/contact">
+              {{ apartment.available 
+                 ? (currentLanguage() === 'en' ? 'Inquire Now' : 'S\'informer')
+                 : (currentLanguage() === 'en' ? 'Join Waitlist' : 'Liste d\'attente') }}
+            </button>
+            <button mat-stroked-button>
+              {{ currentLanguage() === 'en' ? 'View Details' : 'Voir Détails' }}
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

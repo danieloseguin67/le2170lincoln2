@@ -1,0 +1,48 @@
+<mat-toolbar class="header-toolbar">
+  <div class="container">
+    <!-- Logo/Brand -->
+    <div class="brand">
+      <a routerLink="/home" class="logo-link">
+        <div class="logo-container">
+          <div class="logo-placeholder">
+            <mat-icon>apartment</mat-icon>
+          </div>
+          <h1>Le 2170 Lincoln</h1>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a *ngFor="let item of menuItems" 
+         [routerLink]="item.path" 
+         routerLinkActive="active"
+         class="nav-link">
+        {{ getLabel(item) }}
+      </a>
+    </nav>
+    
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button mat-button [matMenuTriggerFor]="langMenu" class="lang-button">
+        <mat-icon>language</mat-icon>
+        {{ currentLanguage() === 'en' ? 'EN' : 'FR' }}
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('fr')" 
+                [class.active]="currentLanguage() === 'fr'">
+          Français
+        </button>
+        <button mat-menu-item (click)="switchLanguage('en')"
+                [class.active]="currentLanguage() === 'en'">
+          English
+        </button>
+      </mat-menu>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button mat-icon-button class="mobile-menu-btn">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

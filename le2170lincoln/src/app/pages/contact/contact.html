@@ -1,0 +1,166 @@
+<section class="page-header">
+  <div class="container">
+    <h1>{{ currentLanguage() === 'en' ? 'Contact Us' : 'Nous Contacter' }}</h1>
+    <p>{{ currentLanguage() === 'en' ? 'Get in touch with our leasing team' : 'Contactez notre équipe de location' }}</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-content">
+      <!-- Contact Form -->
+      <div class="contact-form-section">
+        <mat-card class="contact-form-card">
+          <mat-card-header>
+            <mat-card-title>{{ currentLanguage() === 'en' ? 'Send us a Message' : 'Envoyez-nous un Message' }}</mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <form (ngSubmit)="onSubmit()" #contactFormRef="ngForm">
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>{{ currentLanguage() === 'en' ? 'Full Name' : 'Nom Complet' }}</mat-label>
+                  <input matInput [(ngModel)]="contactForm.name" name="name" required>
+                </mat-form-field>
+              </div>
+              
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="half-width">
+                  <mat-label>{{ currentLanguage() === 'en' ? 'Email' : 'Courriel' }}</mat-label>
+                  <input matInput type="email" [(ngModel)]="contactForm.email" name="email" required>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="half-width">
+                  <mat-label>{{ currentLanguage() === 'en' ? 'Phone' : 'Téléphone' }}</mat-label>
+                  <input matInput type="tel" [(ngModel)]="contactForm.phone" name="phone">
+                </mat-form-field>
+              </div>
+              
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>{{ currentLanguage() === 'en' ? 'Inquiry Type' : 'Type de Demande' }}</mat-label>
+                  <mat-select [(ngModel)]="contactForm.inquiry" name="inquiry">
+                    <mat-option *ngFor="let type of inquiryTypes" [value]="type.value">
+                      {{ currentLanguage() === 'en' ? type.labelEn : type.labelFr }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>{{ currentLanguage() === 'en' ? 'Message' : 'Message' }}</mat-label>
+                  <textarea matInput rows="5" [(ngModel)]="contactForm.message" name="message" required></textarea>
+                </mat-form-field>
+              </div>
+              
+              <div class="form-actions">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!contactFormRef.form.valid">
+                  {{ currentLanguage() === 'en' ? 'Send Message' : 'Envoyer le Message' }}
+                </button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="contact-info-section">
+        <mat-card class="contact-info-card">
+          <mat-card-header>
+            <mat-card-title>{{ currentLanguage() === 'en' ? 'Leasing Office' : 'Bureau de Location' }}</mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <div class="contact-item">
+              <mat-icon>phone</mat-icon>
+              <div>
+                <strong>{{ currentLanguage() === 'en' ? 'Phone' : 'Téléphone' }}</strong>
+                <p><a [href]="'tel:' + contactInfo.phone">{{ contactInfo.phone }}</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <mat-icon>email</mat-icon>
+              <div>
+                <strong>{{ currentLanguage() === 'en' ? 'Email' : 'Courriel' }}</strong>
+                <p><a [href]="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <mat-icon>location_on</mat-icon>
+              <div>
+                <strong>{{ currentLanguage() === 'en' ? 'Address' : 'Adresse' }}</strong>
+                <p>{{ contactInfo.address }}</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <mat-icon>schedule</mat-icon>
+              <div>
+                <strong>{{ currentLanguage() === 'en' ? 'Office Hours' : 'Heures d\'Ouverture' }}</strong>
+                <p>{{ currentLanguage() === 'en' ? contactInfo.hours.en : contactInfo.hours.fr }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        
+        <!-- Map Placeholder -->
+        <mat-card class="map-card">
+          <mat-card-header>
+            <mat-card-title>{{ currentLanguage() === 'en' ? 'Location' : 'Emplacement' }}</mat-card-title>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <div class="map-placeholder" 
+                 (mouseenter)="showMapPopupWithDelay()" 
+                 (mouseleave)="hideMapPopupWithDelay()">
+              <mat-icon>map</mat-icon>
+              <p>{{ currentLanguage() === 'en' ? 'Interactive Map' : 'Carte Interactive' }}</p>
+              <small class="address-link">2170 Lincoln Ave, Montreal, QC H3H 1M8</small>
+              
+              <!-- Map Popup -->
+              <div class="map-popup" 
+                   *ngIf="showMapPopup"
+                   (mouseenter)="keepMapPopupOpen()" 
+                   (mouseleave)="hideMapPopupWithDelay()">
+                <div class="popup-header">
+                  <h3>{{ currentLanguage() === 'en' ? 'Get Directions' : 'Obtenir des Directions' }}</h3>
+                  <button class="close-popup" (click)="showMapPopup = false">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+                <div class="map-container">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.294687479861!2d-73.58169758880615!3d45.49826663562425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a4c5e4b5e4b%3A0x5e4b5e4b5e4b5e4b!2s2170%20Lincoln%20Ave%2C%20Montreal%2C%20QC%20H3H%201M8!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+                    width="100%" 
+                    height="200" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+                <div class="popup-actions">
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=2170%20Lincoln%20Avenue%2C%20Montreal%2C%20QC" 
+                     target="_blank" 
+                     class="directions-btn">
+                    <mat-icon>directions</mat-icon>
+                    {{ currentLanguage() === 'en' ? 'Get Directions' : 'Obtenir des Directions' }}
+                  </a>
+                  <a href="https://www.google.com/maps/place/2170%20Lincoln%20Ave%2C%20Montreal%2C%20QC%20H3H%201M8" 
+                     target="_blank" 
+                     class="view-larger-btn">
+                    <mat-icon>open_in_new</mat-icon>
+                    {{ currentLanguage() === 'en' ? 'View Larger Map' : 'Voir Carte Plus Grande' }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

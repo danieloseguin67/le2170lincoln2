@@ -1,0 +1,249 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Define Hazelview-inspired color palette
+$primary-teal: #2E5A5A;
+$primary-dark: #1e3d3d;
+$accent-orange: #F4744B;
+$accent-orange2: #c5816a;
+$accent-orange3: #83584a;
+$accent-coral: #FF6B47;
+$light-gray: #F8F9FA;
+$medium-gray: #6C757D;
+$dark-gray: #343A40;
+
+// Define custom Material palettes
+$custom-primary: (
+  50: #e8f0f0,
+  100: #c5d9d9,
+  200: #9fc0c0,
+  300: #79a6a6,
+  400: #5c9393,
+  500: #2E5A5A,
+  600: #295252,
+  700: #234848,
+  800: #1e3d3d,
+  900: #142d2d,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$custom-accent: (
+  50: #fdf2f0,
+  100: #faddd9,
+  200: #f7c6c0,
+  300: #f4afa6,
+  400: #f29d93,
+  500: #F4744B,
+  600: #f26c44,
+  700: #ef613b,
+  800: #ec5732,
+  900: #e74421,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: rgba(0, 0, 0, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// Apply theme
+html {
+  @include mat.theme((
+    color: (
+      primary: $custom-primary,
+      tertiary: $custom-accent,
+    ),
+    typography: Inter,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  background-color: #f5f3f056; // Light beige background
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: $primary-teal;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+// App layout
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Utility classes
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 480px) {
+    padding: 0 15px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-teal {
+  color: $primary-teal;
+}
+
+.text-orange {
+  color: $accent-orange;
+}
+
+.bg-teal {
+  background-color: $primary-teal;
+}
+
+.bg-orange {
+  background-color: $accent-orange;
+}
+
+.bg-light {
+  background-color: $light-gray;
+}
+
+// Material Design overrides for Hazelview theme
+.mat-mdc-raised-button {
+  &.mat-primary {
+    --mdc-filled-button-container-color: #{$primary-teal};
+    --mdc-filled-button-label-text-color: white;
+    
+    &:hover {
+      --mdc-filled-button-container-color: #{$primary-dark};
+    }
+  }
+  
+  &.mat-accent {
+    --mdc-filled-button-container-color: #{$accent-orange};
+    --mdc-filled-button-label-text-color: white;
+    
+    &:hover {
+      --mdc-filled-button-container-color: #{$accent-coral};
+    }
+  }
+}
+
+.mat-mdc-outlined-button {
+  &.mat-primary {
+    --mdc-outlined-button-outline-color: #{$primary-teal};
+    --mdc-outlined-button-label-text-color: #{$primary-teal};
+    
+    &:hover {
+      background-color: rgba(46, 90, 90, 0.04);
+    }
+  }
+}
+
+// Custom button styles for orange CTAs
+.cta-button-orange {
+  background-color: $accent-orange !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 12px 28px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 12px rgba(244, 116, 75, 0.3) !important;
+}
+
+.cta-button-orange2 {
+  background-color: $accent-orange2 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 12px 28px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 12px rgba(244, 116, 75, 0.3) !important;
+}
+
+.cta-button-orange3 {
+  background-color: $accent-orange3 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 12px 28px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 12px rgba(244, 116, 75, 0.3) !important;
+
+  &:hover {
+    background-color: $accent-coral !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(244, 116, 75, 0.4) !important;
+  }
+}
+
+// Responsive breakpoints
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 960px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    max-width: 540px;
+  }
+}

@@ -1,0 +1,377 @@
+<!-- Hero Section with Video Background -->
+<section class="hero">
+  <!-- YouTube Video Background -->
+  <div class="hero-video-background">
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/r_oK8dKIBYc?autoplay=1&mute=1&loop=1&playlist=r_oK8dKIBYc&controls=0"
+        title="{{ currentLanguage() === 'en' ? 'Virtual Tour of Le 2170 Lincoln Montreal' : 'Visite Virtuelle du 2170 Lincoln Montréal' }}"
+        class="hero-video"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
+  
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <div class="container">
+      <h1 class="hero-title">
+        {{ currentLanguage() === 'en' ? 'Come for a Virtual Visit of Le 2170 Lincoln Montreal' : 'Venez Faire une Visite Virtuelle du 2170 Lincoln Montréal' }}
+      </h1>
+      <p class="hero-subtitle">
+        {{ currentLanguage() === 'en' 
+           ? 'Experience modern living in the heart of Montreal through our virtual tour' 
+           : 'Découvrez la vie moderne au cœur de Montréal grâce à notre visite virtuelle' }}
+      </p>
+      <div class="hero-actions">
+        <button mat-raised-button class="cta-button-orange" routerLink="/apartments">
+          {{ currentLanguage() === 'en' ? 'View Apartments' : 'Voir les Appartements' }}
+        </button>
+        <button mat-raised-button class="cta-button-orange2" routerLink="/contact">
+          {{ currentLanguage() === 'en' ? 'Contact Us' : 'Nous Contacter' }}
+        </button>
+        <button mat-raised-button class="cta-button-orange3" (click)="openSpecialOfferPopup()">
+          {{ currentLanguage() === 'en' ? 'Special Offer!' : 'Offre Spéciale!' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Building Image Section -->
+<section class="montreal-image">
+  <div class="container">
+    <div class="montreal-content">
+      <div class="montreal-text">
+        <h2>{{ currentLanguage() === 'en' ? '2170 Lincoln Avenue Montreal' : '2170 Avenue Lincoln Montréal' }}</h2>
+        <p>{{ currentLanguage() === 'en' 
+           ? 'Discover our modern residential building located in the heart of Montreal. Le 2170 Lincoln offers premium urban living with contemporary amenities, excellent accessibility, and proximity to universities, shopping, and Montreal\'s vibrant downtown core.' 
+           : 'Découvrez notre immeuble résidentiel moderne situé au cœur de Montréal. Le 2170 Lincoln offre une vie urbaine haut de gamme avec des commodités contemporaines, une excellente accessibilité et la proximité des universités, des magasins et du centre-ville animé de Montréal.' }}</p>
+        <div class="building-address" 
+             (mouseenter)="showMapPopupWithDelay()" 
+             (mouseleave)="hideMapPopupWithDelay()">
+          <mat-icon>location_on</mat-icon>
+          <span class="address-link">2170 Lincoln Avenue, Montreal, QC</span>
+          
+          <!-- Map Popup -->
+          <div class="map-popup" 
+               *ngIf="showMapPopup"
+               (mouseenter)="keepMapPopupOpen()" 
+               (mouseleave)="hideMapPopupWithDelay()">
+            <div class="popup-header">
+              <h3>{{ currentLanguage() === 'en' ? 'Get Directions' : 'Obtenir des Directions' }}</h3>
+              <button class="close-popup" (click)="showMapPopup = false">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.294687479861!2d-73.58169758880615!3d45.49826663562425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a4c5e4b5e4b%3A0x5e4b5e4b5e4b5e4b!2s2170%20Lincoln%20Ave%2C%20Montreal%2C%20QC%20H3H%201M8!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+                width="100%" 
+                height="200" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="popup-actions">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=2170%20Lincoln%20Avenue%2C%20Montreal%2C%20QC" 
+                 target="_blank" 
+                 class="directions-btn">
+                <mat-icon>directions</mat-icon>
+                {{ currentLanguage() === 'en' ? 'Get Directions' : 'Obtenir des Directions' }}
+              </a>
+              <a href="https://www.google.com/maps/place/2170%20Lincoln%20Ave%2C%20Montreal%2C%20QC%20H3H%201M8" 
+                 target="_blank" 
+                 class="view-larger-btn">
+                <mat-icon>open_in_new</mat-icon>
+                {{ currentLanguage() === 'en' ? 'View Larger Map' : 'Voir Carte Plus Grande' }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="building-image">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+             alt="{{ currentLanguage() === 'en' ? 'Modern apartment building exterior' : 'Extérieur d\'immeuble d\'appartements moderne' }}"
+             class="montreal-building-image" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ currentLanguage() === 'en' ? 'Why Choose Le 2170 Lincoln?' : 'Pourquoi Choisir Le 2170 Lincoln?' }}</h2>
+      <p>{{ currentLanguage() === 'en' 
+         ? 'Discover what makes our property special' 
+         : 'Découvrez ce qui rend notre propriété spéciale' }}</p>
+    </div>
+    
+    <div class="features-grid">
+      <mat-card *ngFor="let feature of features" class="feature-card">
+        <mat-card-content>
+          <div class="feature-icon">
+            <mat-icon>{{ feature.icon }}</mat-icon>
+          </div>
+          <h3>{{ currentLanguage() === 'en' ? feature.titleEn : feature.titleFr }}</h3>
+          <p>{{ currentLanguage() === 'en' ? feature.descEn : feature.descFr }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Montreal Downtown Lifestyle Carousel -->
+<section class="lifestyle-carousel-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ currentLanguage() === 'en' ? 'Montreal Downtown Lifestyle' : 'Style de Vie du Centre-ville de Montréal' }}</h2>
+      <p>{{ currentLanguage() === 'en' 
+         ? 'Experience the vibrant energy and culture of Montreal\'s downtown core' 
+         : 'Découvrez l\'énergie vibrante et la culture du centre-ville de Montréal' }}</p>
+    </div>
+    
+    <div class="lifestyle-carousel">
+      <div class="lifestyle-carousel-container">
+        <div class="lifestyle-carousel-track" [style.transform]="'translateX(-' + (currentLifestyleSlide * 100) + '%)'">
+          <div class="lifestyle-slide" *ngFor="let image of lifestyleImages; let i = index" [class.active]="i === currentLifestyleSlide">
+            <div class="lifestyle-image-container">
+              <img [src]="image.filename" 
+                   [alt]="currentLanguage() === 'en' ? image.titleEn : image.titleFr" 
+                   class="lifestyle-image" />
+              <div class="lifestyle-overlay">
+                <h3>{{ currentLanguage() === 'en' ? image.titleEn : image.titleFr }}</h3>
+                <p>{{ currentLanguage() === 'en' ? image.descEn : image.descFr }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lifestyle-indicators">
+          <button 
+            *ngFor="let image of lifestyleImages; let i = index" 
+            class="lifestyle-indicator" 
+            [class.active]="i === currentLifestyleSlide"
+            (click)="goToLifestyleSlide(i)">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities Section -->
+<section class="amenities">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ currentLanguage() === 'en' ? 'Premium Amenities' : 'Commodités Premium' }}</h2>
+      <p>{{ currentLanguage() === 'en' 
+         ? 'Experience luxury living with our comprehensive range of amenities' 
+         : 'Vivez dans le luxe avec notre gamme complète de commodités' }}</p>
+    </div>
+    
+    <div class="amenities-grid">
+      <div class="amenity-item" *ngFor="let amenity of amenities">
+        <mat-icon>{{ amenity.icon }}</mat-icon>
+        <h4>{{ currentLanguage() === 'en' ? amenity.titleEn : amenity.titleFr }}</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section">
+  <div class="container">
+    <div class="contact-form-content">
+      <div class="contact-form-text">
+        <h2>{{ currentLanguage() === 'en' ? 'We\'re Here to Help' : 'Nous Sommes Là pour Vous Aider' }}</h2>
+        <p class="phone-number">(438) 800-3870</p>
+        
+        <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmitContactForm(contactForm)">
+          <div class="form-group">
+            <input 
+              type="text" 
+              name="name" 
+              [(ngModel)]="contactFormData.name"
+              placeholder="{{ currentLanguage() === 'en' ? 'Name' : 'Nom' }}"
+              required
+              class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="email" 
+              name="email" 
+              [(ngModel)]="contactFormData.email"
+              placeholder="{{ currentLanguage() === 'en' ? 'Email' : 'Courriel' }}"
+              required
+              class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="tel" 
+              name="phone" 
+              [(ngModel)]="contactFormData.phone"
+              placeholder="{{ currentLanguage() === 'en' ? 'Phone' : 'Téléphone' }}"
+              class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <select 
+              name="bedrooms" 
+              [(ngModel)]="contactFormData.bedrooms"
+              class="form-select">
+              <option value="">{{ currentLanguage() === 'en' ? 'Number of Bedrooms' : 'Nombre de Chambres' }}</option>
+              <option value="studio">{{ currentLanguage() === 'en' ? 'Studio' : 'Studio' }}</option>
+              <option value="1">1 {{ currentLanguage() === 'en' ? 'Bedroom' : 'Chambre' }}</option>
+              <option value="2">2 {{ currentLanguage() === 'en' ? 'Bedrooms' : 'Chambres' }}</option>
+              <option value="3">3 {{ currentLanguage() === 'en' ? 'Bedrooms' : 'Chambres' }}</option>
+              <option value="4+">4+ {{ currentLanguage() === 'en' ? 'Bedrooms' : 'Chambres' }}</option>
+            </select>
+          </div>
+          
+          <button type="submit" mat-raised-button class="submit-btn">
+            {{ currentLanguage() === 'en' ? 'Get In Touch' : 'Contactez-Nous' }}
+          </button>
+        </form>
+      </div>
+      
+      <div class="social-links">
+        <a href="#" class="social-link instagram">
+          <mat-icon>camera_alt</mat-icon>
+        </a>
+        <a href="#" class="social-link facebook">
+          <mat-icon>facebook</mat-icon>
+        </a>
+        <a href="#" class="social-link youtube">
+          <mat-icon>play_circle_filled</mat-icon>
+        </a>
+        <a href="#" class="social-link linkedin">
+          <mat-icon>business</mat-icon>
+        </a>
+        <a href="#" class="social-link tiktok">
+          <mat-icon>music_note</mat-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- We're Here to Help Section -->
+<section class="help-section">
+  <div class="container">
+    <div class="help-content">
+      <div class="help-text">
+        <h2>{{ currentLanguage() === 'en' ? 'We\'re Here to Help' : 'Nous Sommes Là pour Vous Aider' }}</h2>
+        <p>{{ currentLanguage() === 'en' 
+           ? 'Our professional management team is available to assist you with any questions or concerns. We\'re committed to providing exceptional service and ensuring your comfort.' 
+           : 'Notre équipe de gestion professionnelle est disponible pour vous aider avec toutes questions ou préoccupations. Nous nous engageons à fournir un service exceptionnel et à assurer votre confort.' }}</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <mat-icon>phone</mat-icon>
+            <span>(514) 555-2170</span>
+          </div>
+          <div class="contact-item">
+            <mat-icon>email</mat-icon>
+            <span>info@le2170lincoln.com</span>
+          </div>
+          <div class="contact-item">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ currentLanguage() === 'en' ? 'Mon-Fri 9AM-6PM, Sat 10AM-4PM' : 'Lun-Ven 9h-18h, Sam 10h-16h' }}</span>
+          </div>
+        </div>
+        
+        <button mat-raised-button class="cta-button-orange" routerLink="/contact">
+          {{ currentLanguage() === 'en' ? 'Get in Touch' : 'Contactez-Nous' }}
+        </button>
+      </div>
+      
+      <div class="help-image">
+        <mat-icon class="large-icon">support_agent</mat-icon>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>{{ currentLanguage() === 'en' ? 'Ready to Make Le 2170 Lincoln Your Home?' : 'Prêt à Faire du 2170 Lincoln Votre Chez-Vous?' }}</h2>
+      <p>{{ currentLanguage() === 'en' 
+         ? 'Contact our leasing office today to schedule a viewing' 
+         : 'Contactez notre bureau de location aujourd\'hui pour planifier une visite' }}</p>
+      <button mat-raised-button class="cta-button-orange" routerLink="/contact">
+        {{ currentLanguage() === 'en' ? 'Schedule a Visit' : 'Planifier une Visite' }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Special Offer Popup -->
+<div class="popup-overlay" [class.show]="showSpecialOffer" (click)="closeSpecialOfferPopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <button mat-icon-button class="close-btn" (click)="closeSpecialOfferPopup()">
+      <mat-icon>close</mat-icon>
+    </button>
+    
+    <div class="popup-header">
+      <mat-icon class="offer-icon">local_offer</mat-icon>
+      <h2>{{ currentLanguage() === 'en' ? 'Limited Time Offer!' : 'Offre à Durée Limitée!' }}</h2>
+    </div>
+    
+    <div class="popup-body">
+      <h3>{{ currentLanguage() === 'en' ? 'Save on Your First Month!' : 'Économisez sur Votre Premier Mois!' }}</h3>
+      <p>{{ currentLanguage() === 'en' 
+         ? 'Book a viewing this month and receive 50% off your first month\'s rent! Limited availability.' 
+         : 'Réservez une visite ce mois-ci et recevez 50% de réduction sur le loyer de votre premier mois! Disponibilité limitée.' }}</p>
+      
+      <div class="offer-details">
+        <div class="offer-item">
+          <mat-icon>check_circle</mat-icon>
+          <span>{{ currentLanguage() === 'en' ? '50% off first month' : '50% de réduction le premier mois' }}</span>
+        </div>
+        <div class="offer-item">
+          <mat-icon>check_circle</mat-icon>
+          <span>{{ currentLanguage() === 'en' ? 'No application fees' : 'Aucuns frais de demande' }}</span>
+        </div>
+        <div class="offer-item">
+          <mat-icon>check_circle</mat-icon>
+          <span>{{ currentLanguage() === 'en' ? 'Same day approval available' : 'Approbation le jour même disponible' }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup-actions">
+      <button mat-raised-button class="cta-button-orange" routerLink="/contact" (click)="closeSpecialOfferPopup()">
+        {{ currentLanguage() === 'en' ? 'Book Now!' : 'Réservez Maintenant!' }}
+      </button>
+      <button mat-stroked-button (click)="closeSpecialOfferPopup()">
+        {{ currentLanguage() === 'en' ? 'Maybe Later' : 'Peut-être Plus Tard' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Apartment Rooms Web Carousel -->
+<section class="apartment-carousel-section">
+  <div class="container">
+    <div class="apartment-carousel">
+      <div class="apartment-carousel-track" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+        <div class="apartment-carousel-slide" *ngFor="let img of apartmentWebImages; let i = index" [class.active]="i === currentSlide">
+          <img [src]="img" alt="Apartment Room" class="apartment-carousel-image" />
+        </div>
+      </div>
+      <div class="apartment-carousel-indicators">
+        <button *ngFor="let img of apartmentWebImages; let i = index" (click)="goToApartmentSlide(i)" [class.active]="i === currentSlide"></button>
+      </div>
+    </div>
+  </div>
+</section>

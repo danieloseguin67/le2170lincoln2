@@ -1,0 +1,19 @@
+<section class="page-header">
+  <div class="container">
+    <h1>{{ currentLanguage() === 'en' ? 'About Us' : 'À Propos' }}</h1>
+    <p>{{ currentLanguage() === 'en' ? 'Learn more about Le 2170 Lincoln' : 'En savoir plus sur Le 2170 Lincoln' }}</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="placeholder-content">
+      <mat-icon>info</mat-icon>
+      <h2>{{ currentLanguage() === 'en' ? 'About Us Content Coming Soon' : 'Contenu À Propos Bientôt Disponible' }}</h2>
+      <p>{{ currentLanguage() === 'en' ? 'This page will tell the story of our property, management team, and commitment to quality living.' : 'Cette page racontera l\'histoire de notre propriété, notre équipe de gestion et notre engagement envers une vie de qualité.' }}</p>
+      <button mat-raised-button color="primary" routerLink="/contact">
+        {{ currentLanguage() === 'en' ? 'Contact Us' : 'Nous Contacter' }}
+      </button>
+    </div>
+  </div>
+</section>

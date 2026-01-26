@@ -1,0 +1,19 @@
+<section class="page-header">
+  <div class="container">
+    <h1>{{ currentLanguage() === 'en' ? 'Student Living' : 'Vie Étudiante' }}</h1>
+    <p>{{ currentLanguage() === 'en' ? 'Perfect for students with easy campus access' : 'Parfait pour les étudiants avec accès facile au campus' }}</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="placeholder-content">
+      <mat-icon>school</mat-icon>
+      <h2>{{ currentLanguage() === 'en' ? 'Student Living Content Coming Soon' : 'Contenu Vie Étudiante Bientôt Disponible' }}</h2>
+      <p>{{ currentLanguage() === 'en' ? 'This page will feature student-specific amenities, study areas, and campus proximity information.' : 'Cette page présentera les commodités spécifiques aux étudiants, les espaces d\'study et les informations de proximité du campus.' }}</p>
+      <button mat-raised-button color="primary" routerLink="/contact">
+        {{ currentLanguage() === 'en' ? 'Contact for Student Housing' : 'Contacter pour Logement Étudiant' }}
+      </button>
+    </div>
+  </div>
+</section>
