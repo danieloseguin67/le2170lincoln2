@@ -27,18 +27,21 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: le2170lincoln/package-lock.json
 
       - name: Install dependencies
+        working-directory: le2170lincoln
         run: npm ci
 
       - name: Build Angular app
+        working-directory: le2170lincoln
         run: npm run build
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Angular "outputMode": "server" writes browser assets under browser/
-          path: dist/le2170lincoln/browser
+          path: le2170lincoln/dist/le2170lincoln/browser
 
   deploy:
     needs: build
