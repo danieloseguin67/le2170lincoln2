@@ -1,7 +1,7 @@
 .header-toolbar {
   background-color: white;
   color: black;
-  padding: 0;
+  padding: 4px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   position: sticky;
   top: 0;
@@ -138,6 +138,10 @@
 
 // Mobile responsiveness
 @media (max-width: 968px) {
+  .header-toolbar {
+    padding: 2px 0;
+  }
+  
   .desktop-nav {
     display: none;
   }
@@ -153,11 +157,16 @@
   .mobile-menu-btn {
     display: inline-flex;
     align-items: center;
+    padding: 4px 10px;
     
     mat-icon {
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+    }
+    
+    .mobile-menu-label {
+      font-size: 0.9rem;
     }
   }
   
