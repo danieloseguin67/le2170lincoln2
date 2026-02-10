@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This proposal outlines a comprehensive solution for developing, deploying, and maintaining a modern e-commerce website tailored for student needs. The solution includes a fully responsive Angular-based web application with advanced features for product listings, user management, shopping cart, payment processing, and order management.
+This proposal outlines a comprehensive solution for developing, deploying, and maintaining a modern realestate website tailored for student needs. The solution includes a fully responsive Angular-based web application with advanced features for apartments listings, user management
 
 **Special Pricing:** This project leverages cutting-edge AI-powered development tools (GitHub Copilot Agent), allowing us to deliver enterprise-quality code with significantly reduced development time and cost, making our pricing highly competitive while maintaining the highest quality standards.
 

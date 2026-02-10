@@ -1,16 +1,11 @@
-<!-- Hero Section with Video Background -->
+<!-- Hero Section with Image Background -->
 <section class="hero">
-  <!-- YouTube Video Background -->
+  <!-- Static Image Background -->
   <div class="hero-video-background">
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/r_oK8dKIBYc?autoplay=1&mute=1&loop=1&playlist=r_oK8dKIBYc&controls=0"
-        title="{{ language.currentLanguage()() === 'en' ? 'Virtual Tour of Le 2170 Lincoln Montreal' : 'Visite Virtuelle du 2170 Lincoln Montréal' }}"
-        class="hero-video"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </div>
+    <img 
+      src="assets/images/montrealsky.jpg"
+      alt="{{ language.currentLanguage()() === 'en' ? 'Montreal skyline near Le 2170 Lincoln' : 'Skyline de Montréal près du 2170 Lincoln' }}"
+      class="hero-image" />
     <div class="hero-overlay"></div>
   </div>
   
