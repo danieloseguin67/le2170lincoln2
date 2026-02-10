@@ -37,10 +37,15 @@ jobs:
         working-directory: le2170lincoln
         run: npm run build
 
+      - name: Copy index.html to root and add .nojekyll
+        working-directory: le2170lincoln
+        run: |
+          cp dist/le2170lincoln/browser/index.html dist/le2170lincoln/index.html
+          echo > dist/le2170lincoln/browser/.nojekyll
+
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Angular "outputMode": "server" writes browser assets under browser/
           path: le2170lincoln/dist/le2170lincoln/browser
 
   deploy:
