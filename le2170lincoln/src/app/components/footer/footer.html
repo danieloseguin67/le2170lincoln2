@@ -3,7 +3,7 @@
     <div class="footer-content">
       <!-- Contact Information -->
       <div class="contact-section">
-        <h3>{{ currentLanguage() === 'en' ? 'Leasing Office' : 'Bureau de Location' }}</h3>
+        <h3>{{ language.t('footer.leasingOffice') }}</h3>
         <div class="contact-info">
           <div class="contact-item">
             <mat-icon>phone</mat-icon>
@@ -19,14 +19,14 @@
           </div>
           <div class="contact-item">
             <mat-icon>schedule</mat-icon>
-            <span>{{ currentLanguage() === 'en' ? contactInfo.hours.en : contactInfo.hours.fr }}</span>
+            <span>{{ language.currentLanguage()() === 'en' ? contactInfo.hours.en : contactInfo.hours.fr }}</span>
           </div>
         </div>
       </div>
       
       <!-- Social Media -->
       <div class="social-section">
-        <h3>{{ currentLanguage() === 'en' ? 'Follow Us' : 'Suivez-Nous' }}</h3>
+        <h3>{{ language.t('footer.followUs') }}</h3>
         <div class="social-links">
           <a *ngFor="let social of socialMedia" 
              [href]="social.url" 
@@ -42,7 +42,7 @@
     
     <!-- Copyright -->
     <div class="footer-bottom">
-      <p>&copy; 2026 Le 2170 Lincoln. {{ currentLanguage() === 'en' ? 'All rights reserved.' : 'Tous droits réservés.' }}</p>
+    <p>&copy; 2026 Le 2170 Lincoln. {{ language.t('footer.allRightsReserved') }}</p>
     </div>
   </div>
 </footer>

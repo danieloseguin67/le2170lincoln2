@@ -1,19 +1,118 @@
 <section class="page-header">
   <div class="container">
-    <h1>{{ currentLanguage() === 'en' ? 'Student Living' : 'Vie Étudiante' }}</h1>
-    <p>{{ currentLanguage() === 'en' ? 'Perfect for students with easy campus access' : 'Parfait pour les étudiants avec accès facile au campus' }}</p>
+    <h1>{{ language.currentLanguage()() === 'en' ? 'Student Living' : 'Vie Étudiante' }}</h1>
+    <p>{{ language.currentLanguage()() === 'en' ? 'Perfect for students with easy campus access' : 'Parfait pour les étudiants avec accès facile au campus' }}</p>
   </div>
 </section>
 
-<section class="content-section">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&auto=format&fit=crop" 
+         alt="Students studying">
+    <div class="hero-overlay">
+      <div class="container">
+        <h2>{{ language.currentLanguage()() === 'en' ? 'Live Where You Study' : 'Vivez Où Vous Étudiez' }}</h2>
+        <p>{{ language.currentLanguage()() === 'en' 
+           ? 'Experience the ultimate student lifestyle at Le 2170 Lincoln, steps away from Montreal\'s top universities.'
+           : 'Vivez le style de vie étudiant ultime au 2170 Lincoln, à quelques pas des meilleures universités de Montréal.' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
   <div class="container">
-    <div class="placeholder-content">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'Why Students Choose Us' : 'Pourquoi les Étudiants Nous Choisissent' }}
+    </h2>
+    
+    <div class="features-grid">
+      <mat-card *ngFor="let feature of features" class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>{{ feature.icon }}</mat-icon>
+        </div>
+        <h3>{{ language.currentLanguage()() === 'en' ? feature.titleEn : feature.titleFr }}</h3>
+        <p>{{ language.currentLanguage()() === 'en' ? feature.descEn : feature.descFr }}</p>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Campus Proximity Section -->
+<section class="campus-section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'Campus Proximity' : 'Proximité du Campus' }}
+    </h2>
+    <p class="section-subtitle">
+      {{ language.currentLanguage()() === 'en' 
+         ? 'Walk to class in minutes from your doorstep'
+         : 'Marchez jusqu\'aux cours en quelques minutes depuis votre porte' }}
+    </p>
+    
+    <div class="campus-grid">
+      <mat-card *ngFor="let location of campusLocations" class="campus-card">
+        <div class="campus-image">
+          <img [src]="location.image" [alt]="location.name">
+        </div>
+        <mat-card-content>
+          <h3>{{ location.name }}</h3>
+          <div class="location-details">
+            <div class="detail-item">
+              <mat-icon>place</mat-icon>
+              <span>{{ location.distance }}</span>
+            </div>
+            <div class="detail-item">
+              <mat-icon>directions_walk</mat-icon>
+              <span>{{ location.walkTime }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Student Amenities Section -->
+<section class="amenities-section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'Student-Focused Amenities' : 'Commodités pour Étudiants' }}
+    </h2>
+    
+    <div class="amenities-grid">
+      <div *ngFor="let amenity of studentAmenities" class="amenity-item">
+        <div class="amenity-image">
+          <img [src]="amenity.image" [alt]="language.currentLanguage()() === 'en' ? amenity.titleEn : amenity.titleFr">
+        </div>
+        <div class="amenity-content">
+          <h3>{{ language.currentLanguage()() === 'en' ? amenity.titleEn : amenity.titleFr }}</h3>
+          <p>{{ language.currentLanguage()() === 'en' ? amenity.descEn : amenity.descFr }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
       <mat-icon>school</mat-icon>
-      <h2>{{ currentLanguage() === 'en' ? 'Student Living Content Coming Soon' : 'Contenu Vie Étudiante Bientôt Disponible' }}</h2>
-      <p>{{ currentLanguage() === 'en' ? 'This page will feature student-specific amenities, study areas, and campus proximity information.' : 'Cette page présentera les commodités spécifiques aux étudiants, les espaces d\'study et les informations de proximité du campus.' }}</p>
-      <button mat-raised-button color="primary" routerLink="/contact">
-        {{ currentLanguage() === 'en' ? 'Contact for Student Housing' : 'Contacter pour Logement Étudiant' }}
-      </button>
+      <h2>{{ language.currentLanguage()() === 'en' ? 'Ready to Start Your Student Journey?' : 'Prêt à Commencer Votre Parcours Étudiant?' }}</h2>
+      <p>{{ language.currentLanguage()() === 'en' 
+         ? 'Contact us today to learn more about our student housing options and special rates.'
+         : 'Contactez-nous dès aujourd\'hui pour en savoir plus sur nos options de logement étudiant et nos tarifs spéciaux.' }}</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" routerLink="/contact">
+          {{ language.currentLanguage()() === 'en' ? 'Contact for Student Housing' : 'Contacter pour Logement Étudiant' }}
+        </button>
+        <button mat-stroked-button routerLink="/apartments">
+          {{ language.currentLanguage()() === 'en' ? 'View Available Apartments' : 'Voir les Appartements Disponibles' }}
+        </button>
+      </div>
     </div>
   </div>
 </section>

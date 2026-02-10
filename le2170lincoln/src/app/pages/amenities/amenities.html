@@ -1,19 +1,66 @@
 <section class="page-header">
   <div class="container">
-    <h1>{{ currentLanguage() === 'en' ? 'Amenities' : 'Commodités' }}</h1>
-    <p>{{ currentLanguage() === 'en' ? 'Modern amenities for comfortable living' : 'Commodités modernes pour une vie confortable' }}</p>
+    <h1>{{ language.currentLanguage()() === 'en' ? 'Amenities' : 'Commodités' }}</h1>
+    <p>{{ language.currentLanguage()() === 'en' ? 'Modern amenities for comfortable living' : 'Commodités modernes pour une vie confortable' }}</p>
   </div>
 </section>
 
-<section class="content-section">
-  <div class="container">
-    <div class="placeholder-content">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="container">
       <mat-icon>apartment</mat-icon>
-      <h2>{{ currentLanguage() === 'en' ? 'Amenities Information Coming Soon' : 'Informations sur les Commodités Bientôt' }}</h2>
-      <p>{{ currentLanguage() === 'en' ? 'This page will showcase all building amenities including fitness center, rooftop terrace, and more.' : 'Cette page présentera toutes les commodités de l\'immeuble incluant le centre de fitness, la terrasse sur le toit, et plus.' }}</p>
-      <button mat-raised-button color="primary" routerLink="/apartments">
-        {{ currentLanguage() === 'en' ? 'View Apartments' : 'Voir les Appartements' }}
-      </button>
+      <h2>{{ language.currentLanguage()() === 'en' ? 'Experience Modern Living' : 'Vivez dans le Confort Moderne' }}</h2>
+      <p>{{ language.currentLanguage()() === 'en' 
+         ? 'Discover all the amenities designed to enhance your lifestyle at Le 2170 Lincoln.'
+         : 'Découvrez toutes les commodités conçues pour améliorer votre style de vie au 2170 Lincoln.' }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities Grid Section -->
+<section class="amenities-section">
+  <div class="container">
+    <div class="amenities-grid">
+      <mat-card *ngFor="let amenity of amenities" class="amenity-card">
+        <div class="amenity-image">
+          <img [src]="amenity.image" [alt]="language.currentLanguage()() === 'en' ? amenity.titleEn : amenity.titleFr">
+          <div class="amenity-icon-overlay">
+            <mat-icon>{{ amenity.icon }}</mat-icon>
+          </div>
+        </div>
+        
+        <mat-card-content>
+          <h3>{{ language.currentLanguage()() === 'en' ? amenity.titleEn : amenity.titleFr }}</h3>
+          <p>{{ language.currentLanguage()() === 'en' ? amenity.descEn : amenity.descFr }}</p>
+          
+          <div class="features-list">
+            <mat-chip-set>
+              <mat-chip *ngFor="let feature of amenity.features">{{ feature }}</mat-chip>
+            </mat-chip-set>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>{{ language.currentLanguage()() === 'en' ? 'Ready to Make Le 2170 Lincoln Your Home?' : 'Prêt à Faire du 2170 Lincoln Votre Chez-Vous?' }}</h2>
+      <p>{{ language.currentLanguage()() === 'en' 
+         ? 'Explore our available apartments and schedule a tour today.'
+         : 'Explorez nos appartements disponibles et planifiez une visite dès aujourd\'hui.' }}</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" routerLink="/apartments">
+          {{ language.currentLanguage()() === 'en' ? 'View Apartments' : 'Voir les Appartements' }}
+        </button>
+        <button mat-stroked-button routerLink="/contact">
+          {{ language.currentLanguage()() === 'en' ? 'Schedule a Tour' : 'Planifier une Visite' }}
+        </button>
+      </div>
     </div>
   </div>
 </section>

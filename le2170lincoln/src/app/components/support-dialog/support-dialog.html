@@ -1,0 +1,47 @@
+<div class="support-dialog">
+  <h2 mat-dialog-title>
+    <mat-icon>support_agent</mat-icon>
+    Technical Support - SeguinDev
+  </h2>
+
+  <mat-dialog-content>
+    <p>If you have a question or run into an issue while managing listings, fill out this form. A support email will be prepared to <strong>daniel@seguin.dev</strong>.</p>
+
+    <form (ngSubmit)="submit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="name" name="name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput [(ngModel)]="phone" name="phone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="email" name="email" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Question / Issue</mat-label>
+        <textarea matInput rows="4" [(ngModel)]="message" name="message" required></textarea>
+      </mat-form-field>
+
+      @if (errorMessage()) {
+        <div class="error-message">
+          <mat-icon>error</mat-icon>
+          {{ errorMessage() }}
+        </div>
+      }
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="submit()">
+      <mat-icon>send</mat-icon>
+      Submit
+    </button>
+  </mat-dialog-actions>
+</div>

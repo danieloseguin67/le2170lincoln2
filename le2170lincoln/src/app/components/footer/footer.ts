@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { Language } from '../../services/language';
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './footer.scss'
 })
 export class FooterComponent {
-  currentLanguage = signal('fr');
-  
   contactInfo = {
     phone: '(514) 123-4567',
     email: 'rent@le2170lincoln.com',
@@ -26,4 +25,6 @@ export class FooterComponent {
     { name: 'Instagram', url: 'https://instagram.com/le2170lincoln', icon: 'instagram' },
     { name: 'Twitter', url: 'https://twitter.com/le2170lincoln', icon: 'twitter' }
   ];
+
+  constructor(public language: Language) {}
 }

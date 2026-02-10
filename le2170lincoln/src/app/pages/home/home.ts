@@ -1,4 +1,4 @@
-import { Component, signal, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { UnsplashService } from '../../services/unsplash.service';
+import { Language } from '../../services/language';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +17,13 @@ import { UnsplashService } from '../../services/unsplash.service';
   styleUrl: './home.scss'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  constructor(private sanitizer: DomSanitizer, private unsplash: UnsplashService) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private unsplash: UnsplashService,
+    public language: Language
+  ) {}
     apartmentWebImages: string[] = [];
   
-  currentLanguage = signal('fr');
   showSpecialOffer = false;
   
   // Carousel properties
@@ -286,7 +290,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       console.log('Contact form submitted:', this.contactFormData);
       // Here you would typically send the data to your backend service
       // For now, we'll just show an alert
-      alert(this.currentLanguage() === 'en' 
+      alert(this.language.currentLanguage()() === 'en' 
         ? 'Thank you for your interest! We will contact you soon.' 
         : 'Merci pour votre intérêt! Nous vous contacterons bientôt.');
       

@@ -1,0 +1,131 @@
+<div class="listing-edit-dialog">
+  <h2 mat-dialog-title>
+    <mat-icon>{{ isNewListing ? 'add' : 'edit' }}</mat-icon>
+    {{ isNewListing ? 'Add New Listing' : 'Edit Listing' }}
+  </h2>
+  
+  <mat-dialog-content>
+    <form>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Listing ID</mat-label>
+          <input matInput 
+                 [(ngModel)]="listing.id" 
+                 name="id"
+                 [disabled]="!isNewListing"
+                 placeholder="apt_001">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Type</mat-label>
+          <mat-select [(ngModel)]="listing.type" name="type">
+            <mat-option value="Studio">Studio</mat-option>
+            <mat-option value="1BR">1BR</mat-option>
+            <mat-option value="2BR">2BR</mat-option>
+            <mat-option value="3BR">3BR</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Title (FR)</mat-label>
+        <input matInput 
+               [(ngModel)]="listing.titleFr" 
+               name="titleFr"
+               placeholder="2170, Avenue Lincoln, apt. 1007, Montréal (Ville-Marie)">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Title (EN)</mat-label>
+        <input matInput 
+               [(ngModel)]="listing.titleEn" 
+               name="titleEn"
+               placeholder="2170, Lincoln Avenue, apt. 1007, Montreal (Ville-Marie)">
+      </mat-form-field>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="third-width">
+          <mat-label>Size (sq ft)</mat-label>
+          <input matInput 
+                 type="number"
+                 [(ngModel)]="listing.size" 
+                 name="size"
+                 placeholder="650">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="third-width">
+          <mat-label>Monthly Rent ($)</mat-label>
+          <input matInput 
+                 type="number"
+                 [(ngModel)]="listing.rent" 
+                 name="rent"
+                 placeholder="1352">
+        </mat-form-field>
+        
+        <div class="third-width availability-checkbox">
+          <mat-checkbox [(ngModel)]="listing.available" name="available">
+            Available
+          </mat-checkbox>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Bedrooms</mat-label>
+          <input matInput 
+                 type="number"
+                 [(ngModel)]="listing.bedrooms" 
+                 name="bedrooms"
+                 min="0"
+                 max="5">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Bathrooms</mat-label>
+          <input matInput 
+                 type="number"
+                 [(ngModel)]="listing.bathrooms" 
+                 name="bathrooms"
+                 min="1"
+                 max="5">
+        </mat-form-field>
+      </div>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Features (comma-separated)</mat-label>
+        <textarea matInput 
+                  [(ngModel)]="listing.features" 
+                  name="features"
+                  rows="3"
+                  placeholder="Balcon, Rénové, Climatisation"></textarea>
+        <mat-hint>Enter features separated by commas</mat-hint>
+      </mat-form-field>
+
+      <div class="photos-section">
+        <h3>Apartment Photos</h3>
+        <p class="hint">Select one or more images from your computer. They will be uploaded when you click Save.</p>
+
+        <input type="file" accept="image/*" multiple (change)="onFilesSelected($event)">
+
+        <div class="preview-list" *ngIf="imagePreviews.length">
+          <div class="preview-item" *ngFor="let img of imagePreviews">
+            <img [src]="img.url" [alt]="img.name">
+            <span class="name">{{ img.name }}</span>
+          </div>
+        </div>
+
+        <div class="upload-error" *ngIf="uploadError()">
+          {{ uploadError() }}
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()">
+      <mat-icon>save</mat-icon>
+      Save
+    </button>
+  </mat-dialog-actions>
+</div>

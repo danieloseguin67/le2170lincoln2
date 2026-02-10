@@ -1,0 +1,29 @@
+.help-dialog {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  color: #212121;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+
+    mat-icon {
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  mat-dialog-content {
+    padding: 16px 24px;
+    background-color: #fafafa;
+  }
+
+  mat-dialog-actions {
+    padding: 16px 24px;
+  }
+}

@@ -1,0 +1,92 @@
+<div class="apartment-detail-dialog">
+  <div class="dialog-header">
+    <h2>{{ apartment.type }} - ${{ apartment.rent }}/{{ language.currentLanguage()() === 'en' ? 'month' : 'mois' }}</h2>
+    <button mat-icon-button (click)="close()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  
+  <div class="dialog-content">
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+      <div class="main-image">
+        <img [src]="apartment.detailImages[selectedImageIndex()]" 
+             [alt]="apartment.type" 
+             class="detail-photo">
+        
+        <button mat-icon-button class="nav-btn prev-btn" (click)="previousImage()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        
+        <button mat-icon-button class="nav-btn next-btn" (click)="nextImage()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        
+        <div class="availability-badge" [class.available]="apartment.available">
+          {{ apartment.available 
+             ? (language.currentLanguage()() === 'en' ? 'Available' : 'Disponible')
+             : (language.currentLanguage()() === 'en' ? 'Occupied' : 'Occupé') }}
+        </div>
+      </div>
+      
+      <div class="thumbnail-strip">
+        <div *ngFor="let image of apartment.detailImages; let i = index" 
+             class="thumbnail"
+             [class.active]="i === selectedImageIndex()"
+             (click)="selectImage(i)">
+          <img [src]="image" [alt]="apartment.type + ' - ' + (i + 1)">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Apartment Details -->
+    <div class="details-section">
+      <div class="detail-row">
+        <div class="detail-item">
+          <mat-icon>square_foot</mat-icon>
+          <div>
+            <strong>{{ language.currentLanguage()() === 'en' ? 'Size' : 'Superficie' }}</strong>
+            <p>{{ apartment.size }} {{ language.currentLanguage()() === 'en' ? 'sq ft' : 'pi²' }}</p>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <mat-icon>payments</mat-icon>
+          <div>
+            <strong>{{ language.currentLanguage()() === 'en' ? 'Monthly Rent' : 'Loyer mensuel' }}</strong>
+            <p>${{ apartment.rent }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="features-section">
+        <h3>{{ language.currentLanguage()() === 'en' ? 'Features' : 'Caractéristiques' }}</h3>
+        <mat-chip-set>
+          <mat-chip *ngFor="let feature of apartment.features">{{ feature }}</mat-chip>
+        </mat-chip-set>
+      </div>
+      
+      <div class="description-section">
+        <h3>{{ language.currentLanguage()() === 'en' ? 'Description' : 'Description' }}</h3>
+        <p>
+          {{ language.currentLanguage()() === 'en' 
+             ? 'Beautiful apartment located in the heart of downtown Montreal. Perfect for students and young professionals. Close to McGill University, public transportation, and all amenities.'
+             : 'Magnifique appartement situé au cœur du centre-ville de Montréal. Parfait pour les étudiants et les jeunes professionnels. Proche de l\'Université McGill, des transports en commun et de toutes les commodités.' }}
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dialog-actions">
+    <button mat-button (click)="close()">
+      {{ language.currentLanguage()() === 'en' ? 'Close' : 'Fermer' }}
+    </button>
+    <button mat-raised-button color="primary" 
+            [disabled]="!apartment.available"
+            (click)="inquire()">
+      {{ apartment.available 
+        ? (language.currentLanguage()() === 'en' ? 'Inquire Now' : 'S\'informer')
+        : (language.currentLanguage()() === 'en' ? 'Join Waitlist' : 'Liste d\'attente') }}
+    </button>
+  </div>
+</div>

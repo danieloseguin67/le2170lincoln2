@@ -91,6 +91,36 @@
   }
 }
 
+.auth-actions {
+  margin-left: 1rem;
+  
+  .login-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  .user-btn {
+    color: black;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
 .mobile-menu-btn {
   display: none;
   color: black;

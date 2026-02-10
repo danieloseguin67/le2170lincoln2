@@ -26,5 +26,9 @@ export const routes: Routes = [
     path: 'contact', 
     loadComponent: () => import('./pages/contact/contact').then(m => m.ContactComponent) 
   },
+  { 
+    path: 'listings-management', 
+    loadComponent: () => import('./pages/listings-management/listings-management').then(m => m.ListingsManagementComponent) 
+  },
   { path: '**', redirectTo: '/home' }
 ];

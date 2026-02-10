@@ -1,7 +1,7 @@
 <section class="page-header">
   <div class="container">
-    <h1>{{ currentLanguage() === 'en' ? 'Available Apartments' : 'Appartements Disponibles' }}</h1>
-    <p>{{ currentLanguage() === 'en' ? 'Find your perfect home at Le 2170 Lincoln' : 'Trouvez votre chez-vous parfait au 2170 Lincoln' }}</p>
+    <h1>{{ language.currentLanguage()() === 'en' ? 'Available Apartments' : 'Appartements Disponibles' }}</h1>
+    <p>{{ language.currentLanguage()() === 'en' ? 'Find your perfect home at Le 2170 Lincoln' : 'Trouvez votre chez-vous parfait au 2170 Lincoln' }}</p>
   </div>
 </section>
 
@@ -11,27 +11,24 @@
       <mat-card *ngFor="let apartment of apartments" class="apartment-card" 
                 [class.unavailable]="!apartment.available">
         <div class="apartment-image">
-          <div class="image-placeholder">
-            <mat-icon>apartment</mat-icon>
-            <p>{{ currentLanguage() === 'en' ? 'Apartment Photo' : 'Photo d\'Appartement' }}</p>
-          </div>
+          <img [src]="apartment.image" [alt]="apartment.type" class="apartment-photo">
           <div class="availability-badge" [class.available]="apartment.available">
             {{ apartment.available 
-               ? (currentLanguage() === 'en' ? 'Available' : 'Disponible')
-               : (currentLanguage() === 'en' ? 'Occupied' : 'Occupé') }}
+               ? (language.currentLanguage()() === 'en' ? 'Available' : 'Disponible')
+               : (language.currentLanguage()() === 'en' ? 'Occupied' : 'Occupé') }}
           </div>
         </div>
         
         <mat-card-content>
           <div class="apartment-header">
             <h3>{{ apartment.type }}</h3>
-            <div class="rent">${{ apartment.rent }}/{{ currentLanguage() === 'en' ? 'month' : 'mois' }}</div>
+            <div class="rent">${{ apartment.rent }}/{{ language.currentLanguage()() === 'en' ? 'month' : 'mois' }}</div>
           </div>
           
           <div class="apartment-details">
             <div class="detail-item">
               <mat-icon>square_foot</mat-icon>
-              <span>{{ apartment.size }} {{ currentLanguage() === 'en' ? 'sq ft' : 'pi²' }}</span>
+              <span>{{ apartment.size }} {{ language.currentLanguage()() === 'en' ? 'sq ft' : 'pi²' }}</span>
             </div>
           </div>
           
@@ -46,11 +43,11 @@
                     [disabled]="!apartment.available"
                     routerLink="/contact">
               {{ apartment.available 
-                 ? (currentLanguage() === 'en' ? 'Inquire Now' : 'S\'informer')
-                 : (currentLanguage() === 'en' ? 'Join Waitlist' : 'Liste d\'attente') }}
+                 ? (language.currentLanguage()() === 'en' ? 'Inquire Now' : 'S\'informer')
+                 : (language.currentLanguage()() === 'en' ? 'Join Waitlist' : 'Liste d\'attente') }}
             </button>
-            <button mat-stroked-button>
-              {{ currentLanguage() === 'en' ? 'View Details' : 'Voir Détails' }}
+            <button mat-stroked-button (click)="viewDetails(apartment)">
+              {{ language.currentLanguage()() === 'en' ? 'View Details' : 'Voir Détails' }}
             </button>
           </div>
         </mat-card-content>

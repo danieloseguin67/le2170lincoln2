@@ -1,0 +1,57 @@
+<div class="login-dialog">
+  <div class="dialog-header">
+    <mat-icon class="header-icon">admin_panel_settings</mat-icon>
+    <h2 mat-dialog-title>Admin Login</h2>
+    <p class="subtitle">{{ language.currentLanguage()() === 'en' ? 'Management Portal Access' : 'Accès au Portail de Gestion' }}</p>
+  </div>
+  
+  <mat-dialog-content>
+    <!-- Demo Credentials Banner -->
+    <div class="demo-banner">
+      <mat-icon>info</mat-icon>
+      <div class="demo-info">
+        <strong>{{ language.currentLanguage()() === 'en' ? 'Demo Credentials' : 'Identifiants de Démo' }}</strong>
+        <div class="credentials">
+          <span>{{ language.currentLanguage()() === 'en' ? 'Username' : 'Nom d\'utilisateur' }}: <code>admin</code></span>
+          <span>{{ language.currentLanguage()() === 'en' ? 'Password' : 'Mot de passe' }}: <code>admin123</code></span>
+        </div>
+      </div>
+    </div>
+    
+    <form (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>User ID</mat-label>
+        <input matInput 
+               type="text" 
+               [(ngModel)]="username" 
+               name="username"
+               placeholder="Enter user ID"
+               required>
+        <mat-icon matPrefix>person</mat-icon>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput 
+               type="password" 
+               [(ngModel)]="password" 
+               name="password"
+               placeholder="Enter password"
+               required>
+        <mat-icon matPrefix>lock</mat-icon>
+      </mat-form-field>
+      
+      @if (errorMessage()) {
+        <div class="error-message">
+          <mat-icon>error</mat-icon>
+          {{ errorMessage() }}
+        </div>
+      }
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+  </mat-dialog-actions>
+</div>

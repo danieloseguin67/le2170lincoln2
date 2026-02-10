@@ -6,11 +6,28 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+// @ts-ignore - multer types are provided at runtime only
+import multer from 'multer';
+import { mkdirSync } from 'node:fs';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
+const uploadFolder = join(import.meta.dirname, '../uploads');
+
+mkdirSync(uploadFolder, { recursive: true });
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+
+const storage = multer.diskStorage({
+  destination: (_req: any, _file: any, cb: any) => cb(null, uploadFolder),
+  filename: (_req: any, file: any, cb: any) => {
+    const timestamp = Date.now();
+    const sanitized = file.originalname.replace(/[^a-zA-Z0-9_.-]/g, '_');
+    cb(null, `${timestamp}_${sanitized}`);
+  },
+});
+
+const upload = multer({ storage });
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -34,6 +51,16 @@ app.use(
     redirect: false,
   }),
 );
+
+// Serve uploaded images
+app.use('/uploads', express.static(uploadFolder));
+
+// Simple API endpoint to upload apartment images
+app.post('/api/upload-images', upload.array('images', 10), (req: any, res: any) => {
+  const files = (req.files as any[]) || [];
+  const urls = files.map((file: any) => `/uploads/${file.filename}`);
+  res.json({ urls });
+});
 
 /**
  * Handle all other requests by rendering the Angular application.

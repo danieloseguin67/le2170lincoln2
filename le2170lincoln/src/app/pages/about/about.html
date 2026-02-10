@@ -1,19 +1,136 @@
 <section class="page-header">
   <div class="container">
-    <h1>{{ currentLanguage() === 'en' ? 'About Us' : 'À Propos' }}</h1>
-    <p>{{ currentLanguage() === 'en' ? 'Learn more about Le 2170 Lincoln' : 'En savoir plus sur Le 2170 Lincoln' }}</p>
+    <h1>{{ language.currentLanguage()() === 'en' ? 'About Us' : 'À Propos' }}</h1>
+    <p>{{ language.currentLanguage()() === 'en' ? 'Learn more about Le 2170 Lincoln' : 'En savoir plus sur Le 2170 Lincoln' }}</p>
   </div>
 </section>
 
-<section class="content-section">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&auto=format&fit=crop" 
+         alt="Montreal cityscape">
+    <div class="hero-overlay">
+      <div class="container">
+        <h2>{{ language.currentLanguage()() === 'en' ? 'Welcome to Le 2170 Lincoln' : 'Bienvenue au 2170 Lincoln' }}</h2>
+        <p>{{ language.currentLanguage()() === 'en' 
+           ? 'A distinguished address in the heart of Montreal since the 1960s, where history meets modern comfort.'
+           : 'Une adresse distinguée au cœur de Montréal depuis les années 1960, où l\'histoire rencontre le confort moderne.' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
   <div class="container">
-    <div class="placeholder-content">
-      <mat-icon>info</mat-icon>
-      <h2>{{ currentLanguage() === 'en' ? 'About Us Content Coming Soon' : 'Contenu À Propos Bientôt Disponible' }}</h2>
-      <p>{{ currentLanguage() === 'en' ? 'This page will tell the story of our property, management team, and commitment to quality living.' : 'Cette page racontera l\'histoire de notre propriété, notre équipe de gestion et notre engagement envers une vie de qualité.' }}</p>
-      <button mat-raised-button color="primary" routerLink="/contact">
-        {{ currentLanguage() === 'en' ? 'Contact Us' : 'Nous Contacter' }}
-      </button>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>{{ language.currentLanguage()() === 'en' ? 'Our Story' : 'Notre Histoire' }}</h2>
+        <p>{{ language.currentLanguage()() === 'en' 
+           ? 'Le 2170 Lincoln Avenue has been a cornerstone of Montreal\'s vibrant downtown community for over six decades. Located in the prestigious university district, our building has welcomed countless students, young professionals, and families seeking quality accommodation in one of Canada\'s most culturally rich cities.'
+           : 'Le 2170 Avenue Lincoln est une pierre angulaire de la communauté dynamique du centre-ville de Montréal depuis plus de six décennies. Situé dans le prestigieux quartier universitaire, notre immeuble a accueilli d\'innombrables étudiants, jeunes professionnels et familles à la recherche d\'un logement de qualité dans l\'une des villes les plus riches culturellement du Canada.' }}</p>
+        
+        <p>{{ language.currentLanguage()() === 'en' 
+           ? 'Our commitment to excellence and resident satisfaction has made us a preferred choice for those seeking comfortable, well-maintained apartments in a prime location. We take pride in maintaining our building to the highest standards while preserving its unique character and charm.'
+           : 'Notre engagement envers l\'excellence et la satisfaction des résidents a fait de nous un choix privilégié pour ceux qui recherchent des appartements confortables et bien entretenus dans un emplacement de choix. Nous sommes fiers de maintenir notre immeuble aux normes les plus élevées tout en préservant son caractère et son charme uniques.' }}</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop" 
+             alt="Building exterior">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- History Timeline -->
+<section class="timeline-section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'Our Journey Through Time' : 'Notre Parcours à Travers le Temps' }}
+    </h2>
+    
+    <div class="timeline">
+      <div *ngFor="let item of historyTimeline; let i = index" 
+           class="timeline-item" 
+           [class.timeline-left]="i % 2 === 0"
+           [class.timeline-right]="i % 2 !== 0">
+        <div class="timeline-marker">
+          <div class="timeline-year">{{ item.year }}</div>
+        </div>
+        <mat-card class="timeline-content">
+          <h3>{{ language.currentLanguage()() === 'en' ? item.titleEn : item.titleFr }}</h3>
+          <p>{{ language.currentLanguage()() === 'en' ? item.descEn : item.descFr }}</p>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Neighborhood Section -->
+<section class="neighborhood-section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'The Lincoln Avenue Neighborhood' : 'Le Quartier de l\'Avenue Lincoln' }}
+    </h2>
+    <p class="section-subtitle">
+      {{ language.currentLanguage()() === 'en' 
+         ? 'Discover one of Montreal\'s most dynamic and convenient locations'
+         : 'Découvrez l\'un des emplacements les plus dynamiques et pratiques de Montréal' }}
+    </p>
+    
+    <div class="neighborhood-image-large">
+      <img src="https://images.unsplash.com/photo-1519659528534-7fd733a832a0?w=1200&auto=format&fit=crop" 
+           alt="Montreal neighborhood">
+    </div>
+    
+    <div class="features-grid">
+      <mat-card *ngFor="let feature of neighborhoodFeatures" class="feature-card">
+        <div class="feature-icon">
+          <mat-icon>{{ feature.icon }}</mat-icon>
+        </div>
+        <h3>{{ language.currentLanguage()() === 'en' ? feature.titleEn : feature.titleFr }}</h3>
+        <p>{{ language.currentLanguage()() === 'en' ? feature.descEn : feature.descFr }}</p>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ language.currentLanguage()() === 'en' ? 'Our Values & Commitment' : 'Nos Valeurs & Engagement' }}
+    </h2>
+    
+    <div class="values-grid">
+      <div *ngFor="let value of values" class="value-item">
+        <div class="value-icon">
+          <mat-icon>{{ value.icon }}</mat-icon>
+        </div>
+        <h3>{{ language.currentLanguage()() === 'en' ? value.titleEn : value.titleFr }}</h3>
+        <p>{{ language.currentLanguage()() === 'en' ? value.descEn : value.descFr }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>{{ language.currentLanguage()() === 'en' ? 'Ready to Call Le 2170 Lincoln Home?' : 'Prêt à Faire du 2170 Lincoln Votre Maison?' }}</h2>
+      <p>{{ language.currentLanguage()() === 'en' 
+         ? 'Join our community and experience the best of Montreal living.'
+         : 'Rejoignez notre communauté et vivez le meilleur de Montréal.' }}</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" routerLink="/apartments">
+          {{ language.currentLanguage()() === 'en' ? 'View Available Apartments' : 'Voir les Appartements Disponibles' }}
+        </button>
+        <button mat-stroked-button routerLink="/contact">
+          {{ language.currentLanguage()() === 'en' ? 'Contact Us Today' : 'Nous Contacter' }}
+        </button>
+      </div>
     </div>
   </div>
 </section>

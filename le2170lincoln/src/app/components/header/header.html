@@ -26,18 +26,43 @@
     <div class="language-switcher">
       <button mat-button [matMenuTriggerFor]="langMenu" class="lang-button">
         <mat-icon>language</mat-icon>
-        {{ currentLanguage() === 'en' ? 'EN' : 'FR' }}
+        {{ language.currentLanguage()() === 'en' ? 'EN' : 'FR' }}
       </button>
       <mat-menu #langMenu="matMenu">
         <button mat-menu-item (click)="switchLanguage('fr')" 
-                [class.active]="currentLanguage() === 'fr'">
+                [class.active]="language.currentLanguage()() === 'fr'">
           Français
         </button>
         <button mat-menu-item (click)="switchLanguage('en')"
-                [class.active]="currentLanguage() === 'en'">
+                [class.active]="language.currentLanguage()() === 'en'">
           English
         </button>
       </mat-menu>
+    </div>
+    
+    <!-- Login/Logout Button -->
+    <div class="auth-actions">
+      @if (!authService.isAuthenticated()) {
+        <button mat-raised-button color="primary" (click)="openLoginDialog()" class="login-btn">
+          <mat-icon>login</mat-icon>
+          {{ language.t('header.login') }}
+        </button>
+      } @else {
+        <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
+          <mat-icon>account_circle</mat-icon>
+          Admin
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="goToManagement()">
+            <mat-icon>dashboard</mat-icon>
+            {{ language.t('header.management') }}
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            {{ language.t('header.logout') }}
+          </button>
+        </mat-menu>
+      }
     </div>
     
     <!-- Mobile Menu Button -->

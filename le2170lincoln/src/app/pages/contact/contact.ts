@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Language } from '../../services/language';
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './contact.scss'
 })
 export class ContactComponent {
-  currentLanguage = signal('fr');
+  constructor(public language: Language) {}
   
   // Map popup properties
   showMapPopup = false;
@@ -49,7 +50,7 @@ export class ContactComponent {
   onSubmit() {
     console.log('Form submitted:', this.contactForm);
     // Here you would typically send the form data to a backend service
-    alert(this.currentLanguage() === 'en' 
+    alert(this.language.currentLanguage()() === 'en' 
       ? 'Thank you for your message! We will contact you soon.' 
       : 'Merci pour votre message! Nous vous contacterons bientôt.');
   }

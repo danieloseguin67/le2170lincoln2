@@ -1,0 +1,21 @@
+<div class="help-dialog">
+  <h2 mat-dialog-title>
+    <mat-icon>help_outline</mat-icon>
+    How Listings Management Works
+  </h2>
+
+  <mat-dialog-content>
+    <p>Use this screen to manage all apartment listings for 2170 Lincoln.</p>
+    <ul>
+      <li><strong>Add Listing</strong>: opens a form to create a new apartment with ID, titles (FR/EN), type, size, rent, availability, bedrooms, bathrooms and features.</li>
+      <li><strong>Edit</strong>: opens the same form pre-filled so you can update an existing listing.</li>
+      <li><strong>Remove</strong>: permanently removes the listing from the table.</li>
+      <li><strong>Save</strong>: saves the current list of apartments (for production this would write to the SQL Server database).</li>
+    </ul>
+    <p>The table shows both French and English titles so you can verify bilingual data side by side.</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>
