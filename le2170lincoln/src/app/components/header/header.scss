@@ -191,13 +191,12 @@
 // Sidenav container
 .sidenav-container {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: auto; // shrink to toolbar height so it doesn't push content down
 }
 
 :host {
   display: block;
-  height: 100%;
 }
 
 // Mobile sidenav styles
