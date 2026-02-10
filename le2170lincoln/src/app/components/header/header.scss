@@ -5,7 +5,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1500; // keep header above page content
 }
 
 .container {
@@ -224,7 +224,7 @@
   padding: 0;
   background-color: white;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-  z-index: 1001;
+  z-index: 2200; // ensure sidenav is above video/hero content
   position: fixed;
   top: 0;
   right: 0;
