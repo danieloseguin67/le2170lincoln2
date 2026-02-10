@@ -123,8 +123,17 @@
 
 .mobile-menu-btn {
   display: none;
-  color: black;
   margin-left: auto;
+  background-color: #2E5A5A;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 6px 14px;
+
+  .mobile-menu-label {
+    margin-left: 6px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
 }
 
 // Mobile responsiveness
@@ -142,12 +151,13 @@
   }
   
   .mobile-menu-btn {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     
     mat-icon {
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
     }
   }
   

@@ -532,7 +532,10 @@ section {
     align-items: center;
     
     button {
-      width: 200px;
+      width: 100%;
+      max-width: 260px;
+      font-size: 0.95rem !important;
+      white-space: nowrap;
     }
   }
   
