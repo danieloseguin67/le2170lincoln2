@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" [class.drawer-open]="mobileMenuOpen()">
   <!-- Mobile Side Menu -->
   <mat-sidenav #drawer mode="over" [opened]="mobileMenuOpen()" (closed)="closeMobileMenu()" (openedChange)="mobileMenuOpen.set($event)" position="end" class="mobile-sidenav">
     <div class="mobile-menu-header">

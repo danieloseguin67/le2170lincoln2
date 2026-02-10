@@ -211,7 +211,11 @@
 .sidenav-container {
   position: relative;
   width: 100%;
-  height: auto; // shrink to toolbar height so it doesn't push content down
+  height: 64px; // match toolbar height when menu closed
+}
+
+.sidenav-container.drawer-open {
+  height: 100vh; // let drawer use full height when open
 }
 
 :host {
@@ -225,11 +229,7 @@
   background-color: white;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
   z-index: 2200; // ensure sidenav is above video/hero content
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   
   .mobile-menu-header {
