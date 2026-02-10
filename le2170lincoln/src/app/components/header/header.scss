@@ -191,8 +191,13 @@
 // Sidenav container
 .sidenav-container {
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 100%;
+}
+
+:host {
+  display: block;
+  height: 100%;
 }
 
 // Mobile sidenav styles
@@ -200,6 +205,8 @@
   width: 280px;
   padding: 0;
   background-color: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
   
   .mobile-menu-header {
     display: flex;

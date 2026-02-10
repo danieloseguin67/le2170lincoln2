@@ -1,9 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
   <!-- Mobile Side Menu -->
-  <mat-sidenav #drawer mode="over" [opened]="mobileMenuOpen()" (closed)="closeMobileMenu()" position="end" class="mobile-sidenav">
+  <mat-sidenav #drawer mode="over" [opened]="mobileMenuOpen()" (closed)="closeMobileMenu()" (openedChange)="mobileMenuOpen.set($event)" position="end" class="mobile-sidenav">
     <div class="mobile-menu-header">
       <h2>{{ language.currentLanguage()() === 'en' ? 'Menu' : 'Menu' }}</h2>
-      <button mat-icon-button (click)="closeMobileMenu()">
+      <button mat-icon-button (click)="drawer.close()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
