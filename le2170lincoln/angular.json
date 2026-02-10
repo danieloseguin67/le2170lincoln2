@@ -60,7 +60,9 @@
                   "maximumError": "50kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/le2170lincoln2/",
+              "deployUrl": "/le2170lincoln2/"
             },
             "development": {
               "optimization": false,
