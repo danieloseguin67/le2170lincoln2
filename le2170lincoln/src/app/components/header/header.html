@@ -1,73 +1,138 @@
-<mat-toolbar class="header-toolbar">
-  <div class="container">
-    <!-- Logo/Brand -->
-    <div class="brand">
-      <a routerLink="/home" class="logo-link">
-        <div class="logo-container">
-          <div class="logo-placeholder">
-            <mat-icon>apartment</mat-icon>
-          </div>
-          <h1>Le 2170 Lincoln</h1>
-        </div>
-      </a>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Mobile Side Menu -->
+  <mat-sidenav #drawer mode="over" [opened]="mobileMenuOpen()" (closed)="closeMobileMenu()" position="end" class="mobile-sidenav">
+    <div class="mobile-menu-header">
+      <h2>{{ language.currentLanguage()() === 'en' ? 'Menu' : 'Menu' }}</h2>
+      <button mat-icon-button (click)="closeMobileMenu()">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
     
-    <!-- Desktop Navigation -->
-    <nav class="desktop-nav">
+    <nav class="mobile-nav">
       <a *ngFor="let item of menuItems" 
          [routerLink]="item.path" 
          routerLinkActive="active"
-         class="nav-link">
+         (click)="closeMobileMenu()"
+         class="mobile-nav-link">
         {{ getLabel(item) }}
       </a>
-    </nav>
-    
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-      <button mat-button [matMenuTriggerFor]="langMenu" class="lang-button">
-        <mat-icon>language</mat-icon>
-        {{ language.currentLanguage()() === 'en' ? 'EN' : 'FR' }}
-      </button>
-      <mat-menu #langMenu="matMenu">
-        <button mat-menu-item (click)="switchLanguage('fr')" 
-                [class.active]="language.currentLanguage()() === 'fr'">
-          Français
-        </button>
-        <button mat-menu-item (click)="switchLanguage('en')"
-                [class.active]="language.currentLanguage()() === 'en'">
+      
+      <div class="mobile-divider"></div>
+      
+      <!-- Language Options -->
+      <div class="mobile-section">
+        <h3>{{ language.currentLanguage()() === 'en' ? 'Language' : 'Langue' }}</h3>
+        <button mat-button (click)="switchLanguage('en'); closeMobileMenu()" 
+                [class.active]="language.currentLanguage()() === 'en'"
+                class="mobile-lang-btn">
+          <mat-icon>language</mat-icon>
           English
         </button>
-      </mat-menu>
-    </div>
-    
-    <!-- Login/Logout Button -->
-    <div class="auth-actions">
+        <button mat-button (click)="switchLanguage('fr'); closeMobileMenu()"
+                [class.active]="language.currentLanguage()() === 'fr'"
+                class="mobile-lang-btn">
+          <mat-icon>language</mat-icon>
+          Français
+        </button>
+      </div>
+      
+      <div class="mobile-divider"></div>
+      
+      <!-- Auth Actions -->
       @if (!authService.isAuthenticated()) {
-        <button mat-raised-button color="primary" (click)="openLoginDialog()" class="login-btn">
+        <button mat-raised-button color="primary" (click)="openLoginDialog(); closeMobileMenu()" class="mobile-login-btn">
           <mat-icon>login</mat-icon>
           {{ language.t('header.login') }}
         </button>
       } @else {
-        <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
-          <mat-icon>account_circle</mat-icon>
-          Admin
-        </button>
-        <mat-menu #userMenu="matMenu">
-          <button mat-menu-item (click)="goToManagement()">
+        <div class="mobile-section">
+          <button mat-button (click)="goToManagement(); closeMobileMenu()" class="mobile-action-btn">
             <mat-icon>dashboard</mat-icon>
             {{ language.t('header.management') }}
           </button>
-          <button mat-menu-item (click)="logout()">
+          <button mat-button (click)="logout(); closeMobileMenu()" class="mobile-action-btn">
             <mat-icon>logout</mat-icon>
             {{ language.t('header.logout') }}
           </button>
-        </mat-menu>
+        </div>
       }
-    </div>
-    
-    <!-- Mobile Menu Button -->
-    <button mat-icon-button class="mobile-menu-btn">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
-</mat-toolbar>
+    </nav>
+  </mat-sidenav>
+  
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <mat-toolbar class="header-toolbar">
+      <div class="container">
+        <!-- Logo/Brand -->
+        <div class="brand">
+          <a routerLink="/home" class="logo-link">
+            <div class="logo-container">
+              <div class="logo-placeholder">
+                <mat-icon>apartment</mat-icon>
+              </div>
+              <h1>Le 2170 Lincoln</h1>
+            </div>
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+          <a *ngFor="let item of menuItems" 
+             [routerLink]="item.path" 
+             routerLinkActive="active"
+             class="nav-link">
+            {{ getLabel(item) }}
+          </a>
+        </nav>
+        
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+          <button mat-button [matMenuTriggerFor]="langMenu" class="lang-button">
+            <mat-icon>language</mat-icon>
+            {{ language.currentLanguage()() === 'en' ? 'EN' : 'FR' }}
+          </button>
+          <mat-menu #langMenu="matMenu">
+            <button mat-menu-item (click)="switchLanguage('fr')" 
+                    [class.active]="language.currentLanguage()() === 'fr'">
+              Français
+            </button>
+            <button mat-menu-item (click)="switchLanguage('en')"
+                    [class.active]="language.currentLanguage()() === 'en'">
+              English
+            </button>
+          </mat-menu>
+        </div>
+        
+        <!-- Login/Logout Button -->
+        <div class="auth-actions">
+          @if (!authService.isAuthenticated()) {
+            <button mat-raised-button color="primary" (click)="openLoginDialog()" class="login-btn">
+              <mat-icon>login</mat-icon>
+              {{ language.t('header.login') }}
+            </button>
+          } @else {
+            <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
+              <mat-icon>account_circle</mat-icon>
+              Admin
+            </button>
+            <mat-menu #userMenu="matMenu">
+              <button mat-menu-item (click)="goToManagement()">
+                <mat-icon>dashboard</mat-icon>
+                {{ language.t('header.management') }}
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                {{ language.t('header.logout') }}
+              </button>
+            </mat-menu>
+          }
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button mat-icon-button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
