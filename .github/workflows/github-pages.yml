@@ -37,10 +37,10 @@ jobs:
         working-directory: le2170lincoln
         run: npm run build
 
-      - name: Copy index.html to root and add .nojekyll
+      - name: Copy index.html to 404.html and add .nojekyll
         working-directory: le2170lincoln
         run: |
-          cp dist/le2170lincoln/browser/index.html dist/le2170lincoln/index.html
+          cp dist/le2170lincoln/browser/index.html dist/le2170lincoln/browser/404.html
           echo > dist/le2170lincoln/browser/.nojekyll
 
       - name: Upload build artifact

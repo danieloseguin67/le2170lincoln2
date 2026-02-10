@@ -124,29 +124,66 @@
 .mobile-menu-btn {
   display: none;
   color: black;
+  margin-left: auto;
 }
 
 // Mobile responsiveness
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .desktop-nav {
     display: none;
   }
   
+  .language-switcher {
+    display: none;
+  }
+  
+  .auth-actions {
+    display: none;
+  }
+  
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
   }
   
   .brand h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+  
+  .brand .logo-link .logo-container .logo-placeholder {
+    width: 36px;
+    height: 36px;
+    
+    mat-icon {
+      font-size: 22px;
+    }
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 15px;
+    padding: 0 12px;
   }
   
   .brand h1 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  
+  .brand .logo-link .logo-container {
+    gap: 8px;
+  }
+  
+  .brand .logo-link .logo-container .logo-placeholder {
+    width: 32px;
+    height: 32px;
+    
+    mat-icon {
+      font-size: 20px;
+    }
   }
 }
