@@ -66,6 +66,36 @@
         </mat-chip-set>
       </div>
       
+        <div class="listing-details" *ngIf="apartment">
+          <h3>{{ language.currentLanguage()() === 'en' ? 'Listing details' : "Détails de l'annonce" }}</h3>
+          <div class="listing-grid">
+            <div class="listing-item">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Bedrooms' : 'Chambres' }}</span>
+              <span class="value">{{ apartment.bedrooms || (language.currentLanguage()() === 'en' ? 'Studio' : 'Studio') }}</span>
+            </div>
+            <div class="listing-item">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Bathrooms' : 'Salles de bain' }}</span>
+              <span class="value">{{ apartment.bathrooms }}</span>
+            </div>
+            <div class="listing-item">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Floor' : 'Étage' }}</span>
+              <span class="value">{{ apartment.floor }}</span>
+            </div>
+            <div class="listing-item">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Furnished' : 'Meublé' }}</span>
+              <span class="value">{{ apartment.furnished ? (language.currentLanguage()() === 'en' ? 'Yes' : 'Oui') : (language.currentLanguage()() === 'en' ? 'No' : 'Non') }}</span>
+            </div>
+            <div class="listing-item" *ngIf="apartment.utilitiesIncluded">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Utilities included' : 'Services inclus' }}</span>
+              <span class="value">{{ apartment.utilitiesIncluded }}</span>
+            </div>
+            <div class="listing-item" *ngIf="apartment.leaseTerm">
+              <span class="label">{{ language.currentLanguage()() === 'en' ? 'Lease term' : 'Durée du bail' }}</span>
+              <span class="value">{{ apartment.leaseTerm }}</span>
+            </div>
+          </div>
+        </div>
+      
       <div class="description-section">
         <h3>{{ language.currentLanguage()() === 'en' ? 'Description' : 'Description' }}</h3>
         <p>
@@ -85,8 +115,8 @@
             [disabled]="!apartment.available"
             (click)="inquire()">
       {{ apartment.available 
-        ? (language.currentLanguage()() === 'en' ? 'Inquire Now' : 'S\'informer')
-        : (language.currentLanguage()() === 'en' ? 'Join Waitlist' : 'Liste d\'attente') }}
+        ? (language.currentLanguage()() === 'en' ? 'Inquire Now' : "S'informer")
+        : (language.currentLanguage()() === 'en' ? 'Join Waitlist' : "Liste d'attente") }}
     </button>
   </div>
 </div>

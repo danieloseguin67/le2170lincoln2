@@ -12,7 +12,7 @@
     h2 {
       margin: 0;
       font-size: 1.75rem;
-      color: #1a237e;
+      color: #2b6cb0; // brighter blue for "2BR - $1752/month" over dark backdrop
     }
     
     .close-btn {
@@ -120,13 +120,15 @@
     }
     
     .details-section {
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.75rem 1.75rem;
+      background-color: #ffffff;
+      border-top: 1px solid #e0e0e0;
       
       .detail-row {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem 2.5rem;
+        margin-bottom: 1.75rem;
         
         .detail-item {
           display: flex;
@@ -143,25 +145,28 @@
           div {
             strong {
               display: block;
-              color: #333;
-              margin-bottom: 0.25rem;
+              color: #222;
+              margin-bottom: 0.15rem;
+              font-size: 0.95rem;
+              letter-spacing: 0.01em;
             }
-            
+
             p {
               margin: 0;
-              color: #666;
-              font-size: 1.1rem;
+              color: #444;
+              font-size: 1rem;
             }
           }
         }
       }
       
       .features-section {
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
         
         h3 {
           color: #1a237e;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
+          font-size: 1.1rem;
         }
         
         mat-chip-set {
@@ -171,16 +176,51 @@
         }
       }
       
+      .listing-details {
+        margin-bottom: 1.75rem;
+
+        h3 {
+          color: #1a237e;
+          margin-bottom: 0.6rem;
+          font-size: 1.1rem;
+        }
+
+        .listing-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 0.75rem 1.5rem;
+        }
+
+        .listing-item {
+          display: flex;
+          flex-direction: column;
+          font-size: 0.95rem;
+
+          .label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.1rem;
+            font-size: 0.9rem;
+          }
+
+          .value {
+            color: #222;
+            font-size: 0.98rem;
+          }
+        }
+      }
+      
       .description-section {
         h3 {
           color: #1a237e;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
+          font-size: 1.1rem;
         }
         
         p {
           color: #555;
-          line-height: 1.8;
-          font-size: 1rem;
+          line-height: 1.7;
+          font-size: 0.98rem;
         }
       }
     }
@@ -192,9 +232,43 @@
     gap: 1rem;
     padding: 1rem 1.5rem;
     border-top: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
     
     button {
-      min-width: 120px;
+      min-width: 130px;
+      text-transform: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 999px;
+    }
+
+    // Close button (first)
+    button:first-child {
+      background-color: #ffffff;
+      color: #2E5A5A;
+      border: 2px solid #2E5A5A;
+
+      &:hover {
+        background-color: #e6f0f0;
+      }
+    }
+
+    // Primary action (Inquire / Join Waitlist)
+    button:last-child {
+      background-color: #F4744B;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(244, 116, 75, 0.35);
+
+      &:hover:not(:disabled) {
+        background-color: #e5673b;
+        box-shadow: 0 6px 16px rgba(244, 116, 75, 0.45);
+      }
+
+      &:disabled {
+        background-color: #d0d4d7;
+        color: #7a848b;
+        box-shadow: none;
+      }
     }
   }
 }

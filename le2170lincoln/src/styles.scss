@@ -162,6 +162,12 @@ app-root {
   background-color: $light-gray;
 }
 
+// Stronger backdrop for apartment detail dialog so underlying
+// blue header text is much less visible when the modal is open.
+.apartment-detail-backdrop.cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 // Material Design overrides for Hazelview theme
 .mat-mdc-raised-button {
   &.mat-primary {

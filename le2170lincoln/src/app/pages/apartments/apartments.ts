@@ -35,7 +35,13 @@ export class ApartmentsComponent {
         'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&auto=format&fit=crop'
-      ]
+      ],
+      bedrooms: 1,
+      bathrooms: 1,
+      floor: 5,
+      furnished: true,
+      utilitiesIncluded: 'Heat & hot water',
+      leaseTerm: '12 months',
     },
     {
       id: 2,
@@ -49,7 +55,13 @@ export class ApartmentsComponent {
         'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&auto=format&fit=crop'
-      ]
+      ],
+      bedrooms: 2,
+      bathrooms: 2,
+      floor: 8,
+      furnished: true,
+      utilitiesIncluded: 'Heat, hot water & Wi-Fi',
+      leaseTerm: '12 months',
     },
     {
       id: 3,
@@ -63,7 +75,13 @@ export class ApartmentsComponent {
         'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&auto=format&fit=crop'
-      ]
+      ],
+      bedrooms: 0,
+      bathrooms: 1,
+      floor: 3,
+      furnished: true,
+      utilitiesIncluded: 'Heat & hot water',
+      leaseTerm: '12 months',
     }
   ];
   
@@ -73,7 +91,8 @@ export class ApartmentsComponent {
       maxWidth: '95vw',
       maxHeight: '90vh',
       data: apartment,
-      panelClass: 'apartment-detail-dialog-container'
+      panelClass: 'apartment-detail-dialog-container',
+      backdropClass: 'apartment-detail-backdrop'
     });
     
     dialogRef.afterClosed().subscribe(result => {
