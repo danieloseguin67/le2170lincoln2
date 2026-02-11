@@ -3,16 +3,17 @@
 
 **Prepared for:** [Student Client Name]  
 **Prepared by:** SeguinDev (a division of 16272649 Canada Inc)  
-**Date:** February 9, 2026  
+**Date:** February 10, 2026  
 **Valid Until:** March 11, 2026
 
 ---
 
 ## Executive Summary
 
-This proposal outlines a comprehensive solution for developing, deploying, and maintaining a modern realestate website tailored for student needs. The solution includes a fully responsive Angular-based web application with advanced features for apartments listings, user management
+This proposal outlines a comprehensive solution for developing, deploying, and maintaining a modern realestate website tailored for rental of appartments within a building, to highlight all available apartments, studient living, and ameneties.
+Further more,  the website will be optimized for search engines to attract more visitors. The project includes domain registration, hosting setup, database design, and a user-friendly admin dashboard for content management.
 
-**Special Pricing:** This project leverages cutting-edge AI-powered development tools (GitHub Copilot Agent), allowing us to deliver enterprise-quality code with significantly reduced development time and cost, making our pricing highly competitive while maintaining the highest quality standards.
+**Special Pricing:** This project leverages cutting-edge AI-powered development tools, allowing us to deliver enterprise-quality code with significantly reduced development time and cost, making our pricing highly competitive while maintaining the highest quality standards.
 
 ---
 
@@ -21,32 +22,24 @@ This proposal outlines a comprehensive solution for developing, deploying, and m
 ### 1. Website Development
 
 **Core E-Commerce Features:**
-- **Multi-page Angular Application** with server-side rendering (SSR)
+- **Multi-page Angular Application** 
   - Homepage with featured products and promotional banners
   - Product catalog with search, filtering, and sorting
   - Individual product detail pages
-  - Shopping cart with real-time updates
   - User registration and login system
-  - User profile and order history
-  - Secure checkout process
-  - Admin dashboard for product and order management
+  - Admin dashboard for apartments and site content management.
   
 - **User Experience Features:**
   - Responsive design for mobile, tablet, and desktop
   - Multi-language support (English/French)
-  - Interactive product galleries with zoom functionality
-  - Modern Material Design UI components
-  - Wishlist/favorites functionality
-  - Product reviews and ratings system
+  - Modern Website Design UI components
   - Real-time stock availability indicators
+  - Scalable architecture to support future growth
   
 - **Administrative Features:**
-  - Secure authentication system with role-based access
-  - Product management (add, edit, delete, inventory tracking)
-  - Order management and fulfillment tracking
-  - Customer management interface
-  - Sales analytics and reporting dashboard
-  - Promotional code management
+  - Secure authentication system
+  - Product management (add, edit, delete apartments)
+  - Managing areas, features, and unit types
   - Email notification system
 
 - **Technical Specifications:**
@@ -56,21 +49,21 @@ This proposal outlines a comprehensive solution for developing, deploying, and m
   - Component-based architecture
   - Optimized image formats (WebP/AVIF) for faster loading
   - RESTful API architecture
-  - Secure payment gateway integration (Stripe/PayPal)
-  - JWT-based authentication
   - File upload handling for product images
 
 ### 2. Domain Registration Services
 
-**Domain:** [yourstore].com (or preferred domain name)
+**Domain:** le2170lincoln.com
 
 **Service Provider:** GoDaddy
 - Domain registration: 3 years
 - DNS management included
 - WHOIS privacy protection
+- Microsoft 365 email setup (1 mailbox included)
 - Email forwarding capability
 - Domain lock security feature
 - 24/7 domain support
+- GoDaddy's domain management dashboard for easy control
 
 **Cost:** $40 CAD (3 years)
 
